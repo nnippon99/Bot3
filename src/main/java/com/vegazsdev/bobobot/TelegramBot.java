@@ -12,7 +12,7 @@ import org.telegram.telegrambots.meta.api.methods.groupadministration.GetChatMem
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.methods.updatingmessages.DeleteMessage;
 import org.telegram.telegrambots.meta.api.methods.updatingmessages.EditMessageText;
-import org.telegram.telegrambots.meta.api.objects.ChatMember;
+import org.telegram.telegrambots.meta.api.objects.chatmember.ChatMember;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
@@ -60,7 +60,7 @@ public class TelegramBot extends TelegramLongPollingBot {
                     PrefObj chatPrefs = getPrefs(update);
 
                     if (chatPrefs == null) {
-                        chatPrefs = new PrefObj(0, "strings-en.xml", "!");
+                        chatPrefs = new PrefObj(0, "strings-en.xml", "/");
                     }
 
                     if (msg.startsWith(Objects.requireNonNull(chatPrefs.getHotkey()))) {

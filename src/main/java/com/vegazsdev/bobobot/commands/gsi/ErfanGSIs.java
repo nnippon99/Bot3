@@ -34,7 +34,7 @@ public class ErfanGSIs extends Command {
     private final File[] supportedGSIs9 = new File(toolPath + "roms/9").listFiles(File::isDirectory);
     private final File[] supportedGSIs10 = new File(toolPath + "roms/10").listFiles(File::isDirectory);
     private final File[] supportedGSIs11 = new File(toolPath + "roms/11").listFiles(File::isDirectory);
-    private final File[] supportedGSIs12 = new File(toolPath + "roms/S").listFiles(File::isDirectory);
+    private final File[] supportedGSIs12 = new File(toolPath + "roms/12").listFiles(File::isDirectory);
 
     private String infoGSI = "";
 
@@ -140,7 +140,7 @@ public class ErfanGSIs extends Command {
                                                 .replace("[", "")
                                                 .replace("]", ""))
                                 .replace("%4",
-                                        Arrays.toString(supportedGSIs12).replace(toolPath + "roms/S/", "")
+                                        Arrays.toString(supportedGSIs12).replace(toolPath + "roms/12/", "")
                                                 .replace("[", "")
                                                 .replace("]", "")), update);
                     }
