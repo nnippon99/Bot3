@@ -398,7 +398,7 @@ public class ErfanGSIs extends Command {
 
                 StringBuilder generateLinks = new StringBuilder();
 
-                generateLinks.append("\n*▫ Downloads* - ").append("\n");
+                generateLinks.append("\n*Downloads:*").append("\n");
 
                 /*
                  * Fuck, dummy code...
@@ -421,15 +421,12 @@ public class ErfanGSIs extends Command {
                 try {
                     if (Objects.equals(SourceForgeSetup.getSfConf("bot-send-announcement"), "true")) {
                         try {
-                            bot.sendMessage2ID("*Requested " + gsiCmdObj.getGsi() + " GSI*"
-                                    + "\n*From* " + getModelOfOutput()
-                                    + "\n\n*Information*\n`" + descGSI
-                                    + "`\n" + generateLinks
-                                    + "\n\n*Credits*" + "\n"
-                                    + "[Erfan Abdi](https://github.com/erfanoabdi/)" + " | "
-                                    + "[Velosh](https://github.com/Velosh)" + "\n\n"
+                            bot.sendMessage2ID("*" + gsiCmdObj.getGsi() + " GSI*"
+                                    + "\n*Ported From* " + getModelOfOutput() + "\n" + generateLinks
+                                    + "\n\n*Notes:*\nSource forge links only!, if the file wasn't found, try again later\n\n*GSI Information*\n`" + descGSI
+                                    + "`\n\n[Contributers & Credits]()" + "\n\n"
                                     + "*Like, Share & Subscribe!*" + "\n"
-                                    + "[Channel](https://t.me/nippongsi) | [Chat](https://t.me/nippongsi_support)"
+                                    + "[Updates Channel](https://t.me/nippongsi) | [Support Chat](https://t.me/nippongsi_support)"
                                     , Long.parseLong(Objects.requireNonNull(SourceForgeSetup.getSfConf("bot-announcement-id"))));
                         } catch (Exception e) {
                             logger.error("bot-announcement-id looks wrong or not set");
@@ -439,7 +436,7 @@ public class ErfanGSIs extends Command {
                     logger.warn("bot-send-announcement is not set");
                 }
 
-                fullLogs.append("\n").append("Finished!");
+                fullLogs.append("\n").append("Done!");
                 bot.editMessage(fullLogs.toString(), update, id);
                 FileUtils.deleteDirectory(new File(toolPath + "output"));
             } else {
