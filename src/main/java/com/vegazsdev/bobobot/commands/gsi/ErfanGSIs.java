@@ -310,7 +310,7 @@ public class ErfanGSIs extends Command {
         boolean success = false;
 
         StringBuilder fullLogs = new StringBuilder();
-        fullLogs.append("`-> Starting process...`");
+        fullLogs.append("`--> Building GSI...`");
 
         InputStream inputStream = null;
         InputStreamReader inputStreamReader = null;
@@ -352,7 +352,7 @@ public class ErfanGSIs extends Command {
             }
 
             if (success) {
-                fullLogs.append("\n").append("`Creating gzip...`");
+                fullLogs.append("\n").append("`--> Compressing GSI...`");
                 bot.editMessage(fullLogs.toString(), update, id);
 
                 String[] gzipFiles = listFilesForFolder(new File("ErfanGSIs" + "/output"));
@@ -385,7 +385,7 @@ public class ErfanGSIs extends Command {
                     logger.error(e.getMessage());
                 }
 
-                fullLogs.append("\n").append("`Sending files to SF...`");
+                fullLogs.append("\n").append("`--> Uploading GSI...`");
                 bot.editMessage(fullLogs.toString(), update, id);
 
                 String re = new SourceForgeUpload().uploadGsi(arr, gsiCmdObj.getGsi());
@@ -398,7 +398,7 @@ public class ErfanGSIs extends Command {
 
                 StringBuilder generateLinks = new StringBuilder();
 
-                generateLinks.append("\n*▫ Download* - ").append("[Folder](https://sourceforge.net/projects/").append(SourceForgeSetup.getSfConf("bot-sf-proj")).append("/files/").append(re).append(")\n");
+                generateLinks.append("\n*▫ Downloads* - ").append("\n");
 
                 /*
                  * Fuck, dummy code...
