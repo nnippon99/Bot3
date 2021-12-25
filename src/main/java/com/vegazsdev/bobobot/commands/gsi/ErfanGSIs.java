@@ -404,14 +404,14 @@ public class ErfanGSIs extends Command {
                  * Fuck, dummy code...
                  */
                 if (!aonly.toString().trim().equals("")) {
-                    generateLinks.append("[Aonly](https://sourceforge.net/projects/").append(SourceForgeSetup.getSfConf("bot-sf-proj")).append("/files/").append(re).append(aonly).append(")");
+                    generateLinks.append("[Aonly (NON SAR) Link](https://sourceforge.net/projects/").append(SourceForgeSetup.getSfConf("bot-sf-proj")).append("/files/").append(re).append(aonly).append(")");
                 }
 
                 if (!aonly.toString().trim().equals("") && !ab.toString().trim().equals("")) {
                     generateLinks.append(" | ");
                 }
                 if (!ab.toString().trim().equals("")) {
-                    generateLinks.append("[AB](https://sourceforge.net/projects/").append(SourceForgeSetup.getSfConf("bot-sf-proj")).append("/files/").append(re).append(ab).append(")");
+                    generateLinks.append("[AB (SAR) Link](https://sourceforge.net/projects/").append(SourceForgeSetup.getSfConf("bot-sf-proj")).append("/files/").append(re).append(ab).append(")");
                 }
 
                 String descGSI = "" + new FileTools().readFile(infoGSI).trim();
@@ -427,9 +427,9 @@ public class ErfanGSIs extends Command {
                                     + "`\n" + generateLinks
                                     + "\n\n*Credits*" + "\n"
                                     + "[Erfan Abdi](https://github.com/erfanoabdi/)" + " | "
-                                    + "[Bo³+t](https://github.com/VeloshGSIs/Bot3)" + "\n\n"
-                                    + "*Treble Experience*" + "\n"
-                                    + "[Channel](https://t.me/TrebleExperience) | [Chat](https://t.me/TrebleExperience_chat) | [GitHub](https://github.com/VeloshGSIs)"
+                                    + "[Velosh](https://github.com/Velosh)" + "\n\n"
+                                    + "*Like, Share & Subscribe!*" + "\n"
+                                    + "[Channel](https://t.me/nippongsi) | [Chat](https://t.me/nippongsi_support)"
                                     , Long.parseLong(Objects.requireNonNull(SourceForgeSetup.getSfConf("bot-announcement-id"))));
                         } catch (Exception e) {
                             logger.error("bot-announcement-id looks wrong or not set");
