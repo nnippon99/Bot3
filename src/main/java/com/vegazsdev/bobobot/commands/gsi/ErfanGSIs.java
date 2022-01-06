@@ -260,9 +260,11 @@ public class ErfanGSIs extends Command {
 
             while ((line = bufferedReader.readLine()) != null) {
                 if (line.contains("qssi"))
-                    line = "QSSI (Qualcomm Generic)";
+                    line = "Generic";
                 else if (line.contains("miatoll"))
-                    line = "MiAtoll";
+                    line = "Redmi Note 9 Pro";
+                else if (line.contains("mainline"))
+                    line = "Pixel device";
                 else if (line.contains("surya"))
                     line = "Poco X3";
 
@@ -310,7 +312,7 @@ public class ErfanGSIs extends Command {
         boolean success = false;
 
         StringBuilder fullLogs = new StringBuilder();
-        fullLogs.append("`--> Building GSI...`");
+        fullLogs.append("`--> Script Started...`");
 
         InputStream inputStream = null;
         InputStreamReader inputStreamReader = null;
@@ -352,7 +354,7 @@ public class ErfanGSIs extends Command {
             }
 
             if (success) {
-                fullLogs.append("\n").append("`--> Compressing GSI...`");
+                fullLogs.append("\n").append("`--> Compressing...`");
                 bot.editMessage(fullLogs.toString(), update, id);
 
                 String[] gzipFiles = listFilesForFolder(new File("ErfanGSIs" + "/output"));
@@ -385,7 +387,7 @@ public class ErfanGSIs extends Command {
                     logger.error(e.getMessage());
                 }
 
-                fullLogs.append("\n").append("`--> Uploading GSI...`");
+                fullLogs.append("\n").append("`--> Uploading...`");
                 bot.editMessage(fullLogs.toString(), update, id);
 
                 String re = new SourceForgeUpload().uploadGsi(arr, gsiCmdObj.getGsi());
@@ -398,33 +400,33 @@ public class ErfanGSIs extends Command {
 
                 StringBuilder generateLinks = new StringBuilder();
 
-                generateLinks.append("\n*Downloads*").append("\n");
+                generateLinks.append("`\n\n*Download from here*").append("\n");
 
                 /*
                  * Fuck, dummy code...
                  */
                 if (!aonly.toString().trim().equals("")) {
-                    generateLinks.append("[Aonly (NON SAR) Link](https://sourceforge.net/projects/").append(SourceForgeSetup.getSfConf("bot-sf-proj")).append("/files/").append(re).append(aonly).append(")");
+                    generateLinks.append("[Aonly Link](https://sourceforge.net/projects/").append(SourceForgeSetup.getSfConf("bot-sf-proj")).append("/files/").append(re).append(aonly).append(")");
                 }
 
                 if (!aonly.toString().trim().equals("") && !ab.toString().trim().equals("")) {
                     generateLinks.append(" | ");
                 }
                 if (!ab.toString().trim().equals("")) {
-                    generateLinks.append("[AB (SAR) Link](https://sourceforge.net/projects/").append(SourceForgeSetup.getSfConf("bot-sf-proj")).append("/files/").append(re).append(ab).append(")");
+                    generateLinks.append("[AB/SAR Link](https://sourceforge.net/projects/").append(SourceForgeSetup.getSfConf("bot-sf-proj")).append("/files/").append(re).append(ab).append(")");
                 }
 
                 String descGSI = "" + new FileTools().readFile(infoGSI).trim();
 
-                bot.sendReply("Done!", update);
+                bot.sendReply("Pushed to channel!", update);
 
                 try {
                     if (Objects.equals(SourceForgeSetup.getSfConf("bot-send-announcement"), "true")) {
                         try {
                             bot.sendMessage2ID("*" + gsiCmdObj.getGsi() + " GSI*"
-                                    + "\n*Ported From* " + getModelOfOutput() + "\n" + generateLinks
-                                    + "\n\n*File not found?*, try again later\n\n*Information*\n`" + descGSI
-                                    + "`\n\n[Contributers & Credits](https://telegra.ph/Contributers--Credits-12-25)" + "\n\n"
+                                    + "\n*Ported From* " + getModelOfOutput() + "\n\n*Information*\n`" + descGSI + generateLinks
+                                    + "\n\n*File not found?* try again later"
+                                    + "\n\n[Contributers & Credits](https://telegra.ph/Contributers--Credits-12-25)" + "\n\n"
                                     + "*Like, Share & Subscribe!*" + "\n"
                                     + "[Channel](https://t.me/nippongsi) | [Group](https://t.me/nippongsi_support)"
                                     , Long.parseLong(Objects.requireNonNull(SourceForgeSetup.getSfConf("bot-announcement-id"))));
@@ -436,7 +438,7 @@ public class ErfanGSIs extends Command {
                     logger.warn("bot-send-announcement is not set");
                 }
 
-                fullLogs.append("\n").append("Done!");
+                fullLogs.append("\n").append("`--> Done!`");
                 bot.editMessage(fullLogs.toString(), update, id);
                 FileUtils.deleteDirectory(new File(toolPath + "output"));
             } else {
