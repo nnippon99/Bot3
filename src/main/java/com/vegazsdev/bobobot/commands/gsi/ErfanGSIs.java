@@ -425,8 +425,8 @@ public class ErfanGSIs extends Command {
                         try {
                             bot.sendMessage2ID("*" + gsiCmdObj.getGsi() + " GSI*"
                                     + "\n*Ported From* " + getModelOfOutput() + "\n\n*Information*\n`" + descGSI + generateLinks
-                                    + "\n\n*File not found?* try again later"
-                                    + "\n\n[Contributers & Credits](https://telegra.ph/Contributers--Credits-12-25)" + "\n\n"
+                                    + "\n\n*File not found?* wait for some time and try again later!"
+                                    + "\n\n[Credits List](https://telegra.ph/Contributers--Credits-12-25)" + "\n\n"
                                     + "*Like, Share & Subscribe!*" + "\n"
                                     + "[Channel](https://t.me/nippongsi) | [Group](https://t.me/nippongsi_support)"
                                     , Long.parseLong(Objects.requireNonNull(SourceForgeSetup.getSfConf("bot-announcement-id"))));
