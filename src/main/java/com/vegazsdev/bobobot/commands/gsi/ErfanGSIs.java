@@ -35,6 +35,7 @@ public class ErfanGSIs extends Command {
     private final File[] supportedGSIs10 = new File(toolPath + "roms/10").listFiles(File::isDirectory);
     private final File[] supportedGSIs11 = new File(toolPath + "roms/11").listFiles(File::isDirectory);
     private final File[] supportedGSIs12 = new File(toolPath + "roms/12").listFiles(File::isDirectory);
+    private final File[] supportedGSIs13 = new File(toolPath + "roms/13").listFiles(File::isDirectory);
 
     private String infoGSI = "";
 
@@ -141,6 +142,10 @@ public class ErfanGSIs extends Command {
                                                 .replace("]", ""))
                                 .replace("%4",
                                         Arrays.toString(supportedGSIs12).replace(toolPath + "roms/12/", "")
+                                                .replace("[", "")
+                                                .replace("]", "")), update)
+                                .replace("%5",
+                                        Arrays.toString(supportedGSIs13).replace(toolPath + "roms/13/", "")
                                                 .replace("[", "")
                                                 .replace("]", "")), update);
                     }
@@ -264,9 +269,9 @@ public class ErfanGSIs extends Command {
                 else if (line.contains("miatoll"))
                     line = "Redmi Note 9 Pro";
                 else if (line.contains("mainline"))
-                    line = "Pixel device";
+                    line = "Google Pixel device";
                 else if (line.contains("surya"))
-                    line = "Poco X3";
+                    line = "Poco X3 NFC";
 
                 fullLogs.append(line);
             }
@@ -406,14 +411,14 @@ public class ErfanGSIs extends Command {
                  * Fuck, dummy code...
                  */
                 if (!aonly.toString().trim().equals("")) {
-                    generateLinks.append("[Aonly Link](https://sourceforge.net/projects/").append(SourceForgeSetup.getSfConf("bot-sf-proj")).append("/files/").append(re).append(aonly).append(")");
+                    generateLinks.append("[Non-SAR/A-only Link](https://sourceforge.net/projects/").append(SourceForgeSetup.getSfConf("bot-sf-proj")).append("/files/").append(re).append(aonly).append(")");
                 }
 
                 if (!aonly.toString().trim().equals("") && !ab.toString().trim().equals("")) {
                     generateLinks.append(" | ");
                 }
                 if (!ab.toString().trim().equals("")) {
-                    generateLinks.append("[AB/SAR Link](https://sourceforge.net/projects/").append(SourceForgeSetup.getSfConf("bot-sf-proj")).append("/files/").append(re).append(ab).append(")");
+                    generateLinks.append("[SAR/AB Link](https://sourceforge.net/projects/").append(SourceForgeSetup.getSfConf("bot-sf-proj")).append("/files/").append(re).append(ab).append(")");
                 }
 
                 String descGSI = "" + new FileTools().readFile(infoGSI).trim();
@@ -423,11 +428,11 @@ public class ErfanGSIs extends Command {
                 try {
                     if (Objects.equals(SourceForgeSetup.getSfConf("bot-send-announcement"), "true")) {
                         try {
-                            bot.sendMessage2ID("*" + gsiCmdObj.getGsi() + " GSI*"
-                                    + "\n*Ported From* " + getModelOfOutput() + "\n\n*Information*\n`" + descGSI + generateLinks
-                                    + "\n\n*File not found?* wait for some time and try again later!"
-                                    + "\n\n[Credits List](https://telegra.ph/Contributers--Credits-12-25)" + "\n\n"
-                                    + "*Like, Share & Subscribe!*" + "\n"
+                            bot.sendMessage2ID("*Requested" + gsiCmdObj.getGsi() + " GSI*"
+                                    + "\n*Ported From* " + getModelOfOutput() + "\n\n*GSI Port Data*\n`" + descGSI + generateLinks
+                                    + "\n\n*Notes*\n*Getting red message with no file found?* try again later!"
+                                    + "\n\n[Contribution & Credits](https://telegra.ph/Contributers--Credits-12-25)" + "\n\n"
+                                    + "*Join US!*" + "\n"
                                     + "[Channel](https://t.me/nippongsi) | [Group](https://t.me/nippongsi_support)"
                                     , Long.parseLong(Objects.requireNonNull(SourceForgeSetup.getSfConf("bot-announcement-id"))));
                         } catch (Exception e) {
