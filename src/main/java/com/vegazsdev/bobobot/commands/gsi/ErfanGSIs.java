@@ -143,7 +143,7 @@ public class ErfanGSIs extends Command {
                                 .replace("%4",
                                         Arrays.toString(supportedGSIs12).replace(toolPath + "roms/12/", "")
                                                 .replace("[", "")
-                                                .replace("]", "")), update)
+                                                .replace("]", ""))
                                 .replace("%5",
                                         Arrays.toString(supportedGSIs13).replace(toolPath + "roms/13/", "")
                                                 .replace("[", "")
