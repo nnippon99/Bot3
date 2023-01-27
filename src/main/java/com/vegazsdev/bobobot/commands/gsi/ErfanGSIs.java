@@ -405,35 +405,35 @@ public class ErfanGSIs extends Command {
 
                 StringBuilder generateLinks = new StringBuilder();
 
-                generateLinks.append("`\n\n*Download links below*").append("\n");
+                generateLinks.append("`\n\n*Downloads*").append("\n");
 
                 /*
                  * Fuck, dummy code...
                  */
                 if (!aonly.toString().trim().equals("")) {
-                    generateLinks.append("[Aonly Link](https://sourceforge.net/projects/").append(SourceForgeSetup.getSfConf("bot-sf-proj")).append("/files/").append(re).append(aonly).append(")");
+                    generateLinks.append("[Download Aonly Link](https://sourceforge.net/projects/").append(SourceForgeSetup.getSfConf("bot-sf-proj")).append("/files/").append(re).append(aonly).append(")");
                 }
 
                 if (!aonly.toString().trim().equals("") && !ab.toString().trim().equals("")) {
                     generateLinks.append(" | ");
                 }
                 if (!ab.toString().trim().equals("")) {
-                    generateLinks.append("[GSI/PORT Link](https://sourceforge.net/projects/").append(SourceForgeSetup.getSfConf("bot-sf-proj")).append("/files/").append(re).append(ab).append(")");
+                    generateLinks.append("[Download AB/SAR Link](https://sourceforge.net/projects/").append(SourceForgeSetup.getSfConf("bot-sf-proj")).append("/files/").append(re).append(ab).append(")");
                 }
 
                 String descGSI = "" + new FileTools().readFile(infoGSI).trim();
 
-                bot.sendReply("Shared into the channel!", update);
+                bot.sendReply("Shared!", update);
 
                 try {
                     if (Objects.equals(SourceForgeSetup.getSfConf("bot-send-announcement"), "true")) {
                         try {
                             bot.sendMessage2ID("*" + gsiCmdObj.getGsi() + " GSI*"
-                                    + "\n*Ported from* " + getModelOfOutput() + "\n\n*Info about Image*\n`" + descGSI + generateLinks
-                                    + "\n\n[Importan notes, please bother yourself reading them!](https://telegra.ph/General-notes-on-GSIs-based-ports-01-01)" + "\n\nThanks for your continuous support, appreciated!"
+                                    + "\n*Ported from* " + getModelOfOutput() + "\n\n*Information*\n`" + descGSI + generateLinks
+                                    + "\n\n[Important notes!](https://telegra.ph/General-notes-on-GSIs-based-ports-01-01)" + "\n\nThanks for your continuous support, appreciated!"
                                     + "\n\n[Project Contributions](https://telegra.ph/Contributers--Credits-12-25)" + "\n\n"
-                                    + "*Like, Share and Subscribe!*" + "\n"
-                                    + "[Updates Channel](https://t.me/nippongsi) | [Support Group](https://t.me/nippongsi_support)"
+                                    + "*Don't forget to share!*" + "\n"
+                                    + "[Channel](https://t.me/nippongsi) | [Group](https://t.me/nippongsi_support)"
                                     , Long.parseLong(Objects.requireNonNull(SourceForgeSetup.getSfConf("bot-announcement-id"))));
                         } catch (Exception e) {
                             logger.error("bot-announcement-id looks wrong or not set");
