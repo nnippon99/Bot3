@@ -405,7 +405,7 @@ public class ErfanGSIs extends Command {
 
                 StringBuilder generateLinks = new StringBuilder();
 
-                generateLinks.append("`\n\n*Downloads*").append("\n");
+                generateLinks.append("`\n\n*Download:*").append(" ");
 
                 /*
                  * Fuck, dummy code...
@@ -431,7 +431,7 @@ public class ErfanGSIs extends Command {
                             bot.sendMessage2ID("*" + gsiCmdObj.getGsi() + " GSI*"
                                     + "\n*Ported from* " + getModelOfOutput() + "\n\n*Image Information*\n`" + descGSI + generateLinks
                                     + "\n\n[Better you read this before](https://telegra.ph/General-notes-on-GSIs-based-ports-01-01)"
-                                    + "\n\n[NipponGSI Project Contributions](https://telegra.ph/NipponGSI-Project-Contributions-10-04)" + "\n\n"
+                                    + "\n\n[NipponGSI Project Contributions](https://telegra.ph/NipponGSI-Project-Contributions-10-04)" + "\n\n*Share wen*\n"
                                     + "[Channel](https://t.me/nippongsi) | [Group](https://t.me/nippongsi_support)"
                                     , Long.parseLong(Objects.requireNonNull(SourceForgeSetup.getSfConf("bot-announcement-id"))));
                         } catch (Exception e) {
